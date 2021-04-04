@@ -1,24 +1,34 @@
-import logo from './logo.svg';
-import './App.css';
+import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
+import "bootstrap/dist/css/bootstrap.min.css";
+import Header from "./components/layout/Header";
+import ScheduleMatch from "./components/schedule/ScheduleMatch";
+import Home from "./components/home/Home";
+import LiveScore from "./components/livescores/LiveScore";
+import Series from "./components/series/Series";
+import News from "./components/news/News";
+import Ranking from "./components/ranking/Ranking";
+import Polls from "./components/polls/Polls";
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Router>
+      <div className="App">
+        <Header />
+        <br />
+      </div>
+      <div className="container">
+        <Switch>
+          <Route exact path="/" component={Home} />
+          <Route exact path="/livescore" component={LiveScore} />
+          <Route exact path="/schedule" component={ScheduleMatch} />
+          <Route exact path="/series" component={Series} />
+          <Route exact path="/news" component={News} />
+          <Route exact path="/ranking" component={Ranking} />
+          <Route exact path="/polls" component={Polls} />
+        </Switch>
+      </div>
+    </Router>
   );
 }
 
